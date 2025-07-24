@@ -35,7 +35,12 @@ public class SecurityConfig {
     @Bean
     @Order(2)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        /*desabilitando a proteção contra ataques do tipo csrf, que é um ataque quando vc tem uma aplicação
+          que grava dados na seção, mas como nosso back-end é usando api rest e o mesmo não guarda estado da seção
+          então não nos preocupamos com isso.
+         */
         http.csrf(AbstractHttpConfigurer::disable);
+        //permissão para os meus endpoints
         http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
         return http.build();
     }

@@ -99,10 +99,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+    //Adicionando um Role para o usuario
     public void addRole(Role role){
         roles.add(role);
     }
-
+    //verificando se esse usuario possui esse role que foi informado
     public boolean hasRole(String roleName) {
         for (Role role : roles) {
             if (role.getAuthority().equals(roleName)){
